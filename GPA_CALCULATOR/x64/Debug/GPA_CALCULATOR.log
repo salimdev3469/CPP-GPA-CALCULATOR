@@ -1,0 +1,3 @@
+﻿  gpa_calc.cpp
+C:\Users\SalimSerhatAKA\source\repos\GPA_CALCULATOR\gpa_calc.cpp(65,36): warning C4244: 'başlatılıyor': 'float' - 'size_t' dönüşümü; veri kaybı olabilir
+  GPA_CALCULATOR.vcxproj -> C:\Users\SalimSerhatAKA\source\repos\GPA_CALCULATOR\x64\Debug\GPA_CALCULATOR.exe
