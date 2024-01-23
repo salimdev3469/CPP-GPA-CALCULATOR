@@ -5,17 +5,20 @@
 #include <vector>
 using namespace std;
 
-void ortbul(float nots[], float notlar) {
+void ortbul(float nots[], float notlar, float credit) {
     cout << "WHAT IS PASS GRADE FOR THIS COURSE?" << endl;
+  
     float gecmenot;
     cin >> gecmenot;
     float genelort = 0;
     for (int i = 0; i < notlar; i++) {
         genelort = genelort + nots[i];
     }
-    float genel = genelort / notlar;
-    cout << "GPA: " << genel << endl;
-    if (genel >= gecmenot) {
+    float genel = genelort/credit;
+    cout << "GPA:" << genel << endl;
+    cout << "Grade: " << genelort << endl;
+    
+    if (genelort >= gecmenot) {
         cout << "PASS." << endl;
     }
     else {
@@ -24,7 +27,7 @@ void ortbul(float nots[], float notlar) {
 }
 
 void getname(string name) {
-    cout << "Grades for " << name << " course"<<endl;
+    cout << "Grades for " << name << " course" << endl;
 }
 
 int main() {
@@ -35,7 +38,7 @@ int main() {
     cin >> dersSayisi;
 
     string* dersAdlari = new string[dersSayisi];
-    vector<string> secilenDersAdlari; 
+    vector<string> secilenDersAdlari;
 
     for (int i = 0; i < dersSayisi; ++i) {
         cout << i + 1 << "-" << "Course Name: ";
@@ -61,17 +64,25 @@ int main() {
         cout << "How many different grade you will input ? (QUIZ, MIDTERM, FINAL, ATTENDANCE..) : ";
         float notlar;
         cin >> notlar;
-
+        float credit;
+        cout << "Input the credit number of this course." << endl;
+        cin >> credit;
         float* notsayi = new float[notlar];
 
-        cout << "Input the grades: " << endl;
+        cout << "Input the grades:" << endl;
         for (int j = 0; j < notlar; j++) {
             cout << j + 1 << ". Grade:  ";
             cin >> notsayi[j];
+            cout << "IF THIS GRADE HAS TO BE WEIGHTED, INPUT THE WEIGHT(as %).IF ALL HAVE SAME WEIGHT, INPUT 0." << endl;
+            float weight;
+            cin >> weight;
+            notsayi[j] = notsayi[j] * (weight/100);  
         }
-        ortbul(notsayi, notlar);
+        ortbul(notsayi, notlar, credit);
         delete[] notsayi;
     }
+   
     delete[] dersAdlari;
+   
     return 0;
 }
